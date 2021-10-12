@@ -45,3 +45,5 @@ function HTMLgenerator(manager, engineer, intern) {
     </body>
     </html>`;
 }
+
+module.export =  HTMLgenerator;

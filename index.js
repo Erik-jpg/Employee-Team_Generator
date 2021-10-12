@@ -1,13 +1,13 @@
-const { compileHTML,  managerArray,engineerArray, intenserArray } = require('./helper/employees');
+const { computeEmployees,  managerArray,engineerArray, intenserArray } = require('./helper/computeEmployees');
 const fs = require('fs');
-const { HTMLgenerator } = require('./helper/generator');
+const { HTMLgenerator } = require('./helper/HTMLgenerator');
 
 function writeTheFile (data) {
     fs.writeFile("employeeTeam.HTML", data, (error) => error ? console.error(error) : console.log('Employee Cards have been created'))
 }
 
 async function doIt() {
-    await employeeGenerator();
+    await computeEmployees();
     writeTheFile(HTMLgenerator(managerArray, engineerArray, intenserArray));
 }
 

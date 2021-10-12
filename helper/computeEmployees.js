@@ -55,10 +55,9 @@ function theEnd() {
     return inquirer.prompt(
         [
             {
-                type: 'list',
-                name: 'lastQBeforeBuild',
+                type: 'confirm',
+                name: 'confirmBuild',
                 message: 'Have you inputted all employees?',
-                choices: ['yes', 'no']
             },
         ]
     )
@@ -132,28 +131,31 @@ async function computeEmployees() {
     let employeeEntry = await promptEmployeeEntry();
     let employee = new Employee(employeeEntry.name, employeeEntry.email, employeeEntry.id)
     if(employeeEntry.role === 'Manager') {
-        let manager = await promptManagerEntry();
+        let managerAnswers = await promptManagerEntry();
         let manager = new Manager(employeeEntry.name, employeeEntry.email, employeeEntry.id, managerAnswers.officeNumber);
         managerArray.push(manager);
-    } else if(employeeEntry === 'Engineer') {
-        let engineerArray = await promptEngineerEntry();
+    } else if(employeeEntry.role === 'Engineer') {
+        let engineerAnswer = await promptEngineerEntry();
         let engineer = new Engineer(employeeEntry.name, employeeEntry.email, employeeEntry.id, engineerAnswer.github);
         engineerArray.push(engineer);
-        }else if(employeeEntry === 'Intern') {
-            let internArray = await promptInternEntry();
+        }else if(employeeEntry.role === 'Intern') {
+            let internAnswer = await promptInternEntry();
             let intern = new Intern(employeeEntry.name, employeeEntry.email, employeeEntry.id, internAnswer.school);
             internArray.push(intern);
         }
 
     let buildEmployees = await theEnd();
-    if (buildEmployees.lastQBeforeBuild === 'No') {
+    if (buildEmployees.confirmBuild === false) {
         await computeEmployees();
-    } else if((buildEmployees.lastQBeforeBuild === 'Yes') && (managerArray.length > 0) && (engineer.length > 0)) {
+        
+    } else ((buildEmployees.lastQBeforeBuild === true) && (managerArray.length > 0) && (engineer.length > 0)); 
+    // {
         HTMLgenerator(managerArray, engineerArray, internArray);
-    }else {
-        console.log('There must be a Manager and an Engineer to continue.');
-        await buildEmployees();
-    }
+        
+    // } else {
+    //     // console.log('There must be a Manager and an Engineer to continue.')
+    //     await computeEmployees();
+    // }
 }
 
 module.exports = {
