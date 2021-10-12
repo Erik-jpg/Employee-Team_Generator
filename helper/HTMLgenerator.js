@@ -1,13 +1,13 @@
 function createManager(manager) {
-    return `<div class="card" style="width: 20px;"><div class="card-title">${manager.role}</div><ul class="list-stats list-group-flush"><li class="list-group-stats>Name: ${manager.name}</li><li class="list-group-stats">Email: <a href='mailto:${manager.email}'>${manager.email}</a></li><li class="list-group-stats">Employee I.D. Number: ${manager.id}</li><li class="list-stats">Office Number: ${manager.officeNumber}</li><li></div><br/>`;
+    return `<div class="card" style="width: 20px;"><div class="card-header">${manager.role}</div><ul class="list-group list-group-flush"><li class="list-group-item">Name: ${manager.name}</li><li class="list-group-item">Email: <a href='mailto:${manager.email}'>${manager.email}</a></li><li class="list-group-item">Employee I.D. Number: ${manager.id}</li><li class="list-item">Office Number: ${manager.officeNumber}</li><li></div><br/>`;
 }
 
 function createEngineer(engineer) {
-    return `<div class="card" style="width: 20px;"><div class="card-title">${engineer.role}</div><ul class="list-stats list-group-flush"><li class="list-group-stats>Name: ${engineer.name}</li><li class="list-group-stats">Email: <a href='mailto:${engineer.email}'>${engineer.email}</a></li><li class="list-group-stats">Employee I.D. Number: ${engineer.id}</li><li class="list-stats">Github Name: ${engineer.github}</li><li></div><br/>`;
+    return `<div class="card" style="width: 20px;"><div class="card-header">${engineer.role}</div><ul class="list-group list-group-flush"><li class="list-group-item">Name: ${engineer.name}</li><li class="list-group-item">Email: <a href='mailto:${engineer.email}'>${engineer.email}</a></li><li class="list-group-item">Employee I.D. Number: ${engineer.id}</li><li class="list-item">Github Name: ${engineer.github}</li><li></div><br/>`;
 }
 
 function createIntern(intern) {
-    return `<div class="card" style="width: 20px;"><div class="card-title">${intern.role}</div><ul class="list-stats list-group-flush"><li class="list-group-stats>Name: ${intern.name}</li><li class="list-group-stats">Email: <a href='mailto:${intern.email}'>${intern.email}</a></li><li class="list-group-stats">Employee I.D. Number: ${intern.id}</li><li class="list-stats">School: ${intern.school}</li><li></div><br/>`;
+    return `<div class="card" style="width: 20px;"><div class="card-header">${intern.role}</div><ul class="list-group list-group-flush"><li class="list-group-item">Name: ${intern.name}</li><li class="list-group-item">Email: <a href='mailto:${intern.email}'>${intern.email}</a></li><li class="list-group-item">Employee I.D. Number: ${intern.id}</li><li class="list-item">School: ${intern.school}</li><li></div><br/>`;
 }
 
 function createHTML(manager, engineer, intern) {
@@ -26,27 +26,28 @@ function createHTML(manager, engineer, intern) {
     <div class="container" id="manager-container">
         <div class="row" id="manager-row">
             <div class="col" id="manager-column">
-                <h3 class="text-center">Manager</h3>
+                <h3 class="text-center row">Manager</h3>
                 <br>
                 ${manager.map(createManager).join("\n")}
             </div>
             <div class="col" id="engineer-column">
-            <h2 class="text-center>Engineers</h2>
-            <br>Employee${engineer.map(createEngineer).join("\n")}
+            <h2 class="text-center row">Engineers</h2>
+            <br>
+            Employee${engineer.map(createEngineer).join("\n")}
             </div>
             <div class="col" id="intern-col">
-            <h2 class="text-center">Intern</h2>
+            <h2 class="text-center row">Intern</h2>
             <br>
             ${intern.map(createIntern).join("\n")}
             </div>
             </div>
             </div>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+            
     </body>
     </html>`;
 }
 
-module.exports =  { 
+module.exports = {
     createHTML,
     createEngineer,
     createIntern,
