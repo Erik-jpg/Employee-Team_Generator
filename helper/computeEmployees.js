@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { HTMLgenerator } = require('./HTMLgenerator');
+const { createHTML } = require('./HTMLgenerator');
 
 let managerArray = [];
 let engineerArray = [];
@@ -150,13 +150,13 @@ async function computeEmployees() {
         
     } else ((buildEmployees.lastQBeforeBuild === true) && (managerArray.length > 0) && (engineer.length > 0)); 
     // {
-        HTMLgenerator(managerArray, engineerArray, internArray);
+        createHTML(managerArray, engineerArray, internArray);
         
     // } else {
     //     // console.log('There must be a Manager and an Engineer to continue.')
     //     await computeEmployees();
     // }
-}
+};
 
 module.exports = {
     engineerArray,
