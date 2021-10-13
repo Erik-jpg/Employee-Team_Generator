@@ -36,7 +36,7 @@ function createHTML(manager, engineer, intern) {
             Employee${engineer.map(createEngineer).join("\n")}
             </div>
             <div class="col" id="intern-col">
-            <h2 class="text-center row">Intern</h2>
+            <h2 class="text-center row">Interns</h2>
             <br>
             ${intern.map(createIntern).join("\n")}
             </div>
